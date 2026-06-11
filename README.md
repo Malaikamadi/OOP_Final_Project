@@ -2,7 +2,6 @@
 
 A production-ready REST API for searching and managing local clinic services, built with **FastAPI** and **PostgreSQL**.
 
-> Designed as a portfolio-quality project for competition submissions.
 
 ---
 
