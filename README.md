@@ -1,4 +1,4 @@
-# 🏥 Clinic Services API
+#  Clinic Services API
 
 A production-ready REST API for searching and managing local clinic services, built with **FastAPI** and **PostgreSQL**.
 
@@ -6,25 +6,25 @@ A production-ready REST API for searching and managing local clinic services, bu
 
 ---
 
-## ✨ Features
+##  Features
 
 | Feature | Details |
 |---|---|
-| 🔐 Authentication | JWT Bearer Tokens, role-based access (patient / clinic_admin / admin) |
-| 🏥 Clinic Management | Register, update, list, soft-delete clinics |
-| 🔍 Smart Search | Filter by service name, district, GPS radius (5/10/20 km) |
-| 🚑 Specialty Filters | Emergency, Maternal Health, Vaccination Centers |
-| 💊 Services | Add/update/delete clinic services with categories & pricing |
-| 👨‍⚕️ Doctors | Doctor profiles with specialization, qualifications, availability |
-| 📅 Appointments | Book, view, update status, and cancel appointments |
-| ⭐ Reviews | Rate & review clinics (1–5 stars), auto-computed average rating |
-| 🕐 Opening Hours | Set opening hours per day of week |
-| 📍 GPS Search | Haversine formula for radius-based clinic discovery |
-| 🐳 Docker | One-command local dev with `docker compose up` |
+|  Authentication | JWT Bearer Tokens, role-based access (patient / clinic_admin / admin) |
+|  Clinic Management | Register, update, list, soft-delete clinics |
+|  Smart Search | Filter by service name, district, GPS radius (5/10/20 km) |
+|  Specialty Filters | Emergency, Maternal Health, Vaccination Centers |
+|  Services | Add/update/delete clinic services with categories & pricing |
+|  Doctors | Doctor profiles with specialization, qualifications, availability |
+|  Appointments | Book, view, update status, and cancel appointments |
+|  Reviews | Rate & review clinics (1–5 stars), auto-computed average rating |
+|  Opening Hours | Set opening hours per day of week |
+|  GPS Search | Haversine formula for radius-based clinic discovery |
+|  Docker | One-command local dev with `docker compose up` |
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Option A — Docker (Recommended)
 
@@ -72,7 +72,7 @@ Tables are created automatically on first startup.
 
 ---
 
-## 🔑 Environment Variables
+## Environment Variables
 
 | Variable | Description | Default |
 |---|---|---|
@@ -84,7 +84,7 @@ Tables are created automatically on first startup.
 
 ---
 
-## 📚 API Reference
+##  API Reference
 
 Interactive docs: **http://localhost:8000/docs** (Swagger UI)
 
@@ -92,59 +92,59 @@ Interactive docs: **http://localhost:8000/docs** (Swagger UI)
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
-| POST | `/api/v1/auth/register` | ❌ | Register new user |
-| POST | `/api/v1/auth/login` | ❌ | Login, get JWT token |
-| GET | `/api/v1/auth/me` | ✅ | Get current user profile |
+| POST | `/api/v1/auth/register` |   Register new user |
+| POST | `/api/v1/auth/login` |   Login, get JWT token |
+| GET | `/api/v1/auth/me` |   Get current user profile |
 
 ### Clinics
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
-| GET | `/api/v1/clinics` | ❌ | List all clinics (paginated) |
-| POST | `/api/v1/clinics` | 🔒 clinic_admin | Create a clinic |
-| GET | `/api/v1/clinics/search` | ❌ | Search (service, district, GPS) |
-| GET | `/api/v1/clinics/emergency` | ❌ | List emergency clinics |
-| GET | `/api/v1/clinics/maternal` | ❌ | List maternal health clinics |
-| GET | `/api/v1/clinics/vaccination` | ❌ | List vaccination centers |
-| GET | `/api/v1/clinics/{id}` | ❌ | Get clinic by ID |
-| PUT | `/api/v1/clinics/{id}` | 🔒 owner | Update clinic |
-| DELETE | `/api/v1/clinics/{id}` | 🔒 owner | Soft-delete clinic |
+| GET | `/api/v1/clinics` |  List all clinics (paginated) |
+| POST | `/api/v1/clinics` | clinic_admin | Create a clinic |
+| GET | `/api/v1/clinics/search` | Search (service, district, GPS) |
+| GET | `/api/v1/clinics/emergency` | List emergency clinics |
+| GET | `/api/v1/clinics/maternal` |  List maternal health clinics |
+| GET | `/api/v1/clinics/vaccination` |  List vaccination centers |
+| GET | `/api/v1/clinics/{id}` |  Get clinic by ID |
+| PUT | `/api/v1/clinics/{id}` |  owner | Update clinic |
+| DELETE | `/api/v1/clinics/{id}` | owner | Soft-delete clinic |
 
 ### Services, Doctors & Opening Hours
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
-| GET | `/api/v1/clinics/{id}/services` | ❌ | List services |
-| POST | `/api/v1/clinics/{id}/services` | 🔒 | Add service |
-| PUT | `/api/v1/clinics/{id}/services/{sid}` | 🔒 | Update service |
-| DELETE | `/api/v1/clinics/{id}/services/{sid}` | 🔒 | Delete service |
-| GET | `/api/v1/clinics/{id}/doctors` | ❌ | List doctors |
-| POST | `/api/v1/clinics/{id}/doctors` | 🔒 | Add doctor |
-| GET | `/api/v1/clinics/{id}/opening-hours` | ❌ | Get hours |
-| POST | `/api/v1/clinics/{id}/opening-hours` | 🔒 | Set hours for a day |
+| GET | `/api/v1/clinics/{id}/services` |   List services |
+| POST | `/api/v1/clinics/{id}/services` | Add service |
+| PUT | `/api/v1/clinics/{id}/services/{sid}` |  Update service |
+| DELETE | `/api/v1/clinics/{id}/services/{sid}` |  Delete service |
+| GET | `/api/v1/clinics/{id}/doctors` |  List doctors |
+| POST | `/api/v1/clinics/{id}/doctors` |  Add doctor |
+| GET | `/api/v1/clinics/{id}/opening-hours` | Get hours |
+| POST | `/api/v1/clinics/{id}/opening-hours` |  Set hours for a day |
 
 ### Appointments
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
-| POST | `/api/v1/appointments` | ✅ | Book appointment |
-| GET | `/api/v1/appointments/my` | ✅ | My appointments |
-| GET | `/api/v1/appointments/clinic/{id}` | 🔒 | All clinic appointments |
-| PUT | `/api/v1/appointments/{id}/status` | 🔒 | Update status |
-| DELETE | `/api/v1/appointments/{id}` | ✅ | Cancel appointment |
+| POST | `/api/v1/appointments` |  Book appointment |
+| GET | `/api/v1/appointments/my` |  My appointments |
+| GET | `/api/v1/appointments/clinic/{id}` |  All clinic appointments |
+| PUT | `/api/v1/appointments/{id}/status` |  Update status |
+| DELETE | `/api/v1/appointments/{id}` |  Cancel appointment |
 
 ### Reviews
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
-| GET | `/api/v1/clinics/{id}/reviews` | ❌ | List reviews |
-| POST | `/api/v1/clinics/{id}/reviews` | ✅ | Post a review |
-| PUT | `/api/v1/reviews/{id}` | ✅ | Update your review |
-| DELETE | `/api/v1/reviews/{id}` | ✅ | Delete your review |
+| GET | `/api/v1/clinics/{id}/reviews` | List reviews |
+| POST | `/api/v1/clinics/{id}/reviews` |  Post a review |
+| PUT | `/api/v1/reviews/{id}` |  Update your review |
+| DELETE | `/api/v1/reviews/{id}` |  Delete your review |
 
 ---
 
-## 🧪 Example Flow
+## Example Flow
 
 ```bash
 # 1. Register as clinic admin
@@ -174,7 +174,7 @@ curl -X POST http://localhost:8000/api/v1/appointments \
 
 ---
 
-## 🗂️ Project Structure
+##  Project Structure
 
 ```
 clinic-services-api/
@@ -205,7 +205,7 @@ clinic-services-api/
 
 ---
 
-## 🔐 Role Reference
+##  Role Reference
 
 | Role | Can Do |
 |---|---|
@@ -215,7 +215,7 @@ clinic-services-api/
 
 ---
 
-## 🧱 Database Schema
+##  Database Schema
 
 ```
 users ──< clinics ──< services
@@ -227,7 +227,7 @@ users ──< clinics ──< services
 
 ---
 
-## 📦 Tech Stack
+##  Tech Stack
 
 - **FastAPI** — High-performance Python web framework
 - **SQLAlchemy 2.0** — ORM and query builder
@@ -238,6 +238,4 @@ users ──< clinics ──< services
 - **Alembic** — Database migrations (optional)
 - **Docker + Docker Compose** — Containerized deployment
 
----
 
-*Built for the Sierra Leone Health Tech ecosystem* 🇸🇱
